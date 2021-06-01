@@ -10,34 +10,57 @@ namespace TicTacToe
             char player = 'X'; // Initialize player 
             initialize(board); // Initailalize 
             int moves = 0; // Number of moves played
+                Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+            TitleAndInstructions(); // Print those
+            Console.ReadLine();
 
             while (true)
             {
                 // Print titles and board
                 Console.Clear();
-                Console.WriteLine("\n Welcome to Sassy Tic Tac Toe" +
-                                "\n\n==============================");
-                Console.WriteLine("\n Make your move, " + player);
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\n SOMEWHAT SASSY TIC TAC TOE");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("\n============================");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("\n Make your move, ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine(player);
                 Print(board);
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("\n============================");
 
                 // Get row and column from user
-                Console.Write("\n Please enter row number (from up to down) then press ENTER: ");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write("\n ROW: ");
                 int row = Convert.ToInt32(Console.ReadLine()) - 1;
-                Console.Write(" Please enter column number (from left to right) then press ENTER: ");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(" COLUMN: ");
                 int col = Convert.ToInt32(Console.ReadLine()) - 1;
 
                 // Boundary Data
                 if (row < 0 || row > 2 || col < 0 || col > 2)
                 {
-                    Console.WriteLine("\n\n\n No\n\n Press ENTER and try again");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("\n============================");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("\n No");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine(" Press ENTER and try again");
                     Console.ReadLine();
                     continue;
                 }
 
                 // Override check
                 if (board[row, col] == 'X' || board[row, col] == 'O')
-                { 
-                    Console.WriteLine("\n\n\n You ain't allowed to do that\n\n Press ENTER and try agian");
+                {
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("\n============================");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("\n You ain't allowed to do that!");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine(" Press ENTER and try again");
                     Console.ReadLine();
                     continue;
                 }
@@ -58,15 +81,28 @@ namespace TicTacToe
                 {
                  // Winner "Celebration"
                     Console.Clear();
-                    Console.WriteLine(" Sassy Tic Tac Toe\n\n" +
-                                      "===================");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("\n SOMEWHAT SASSY TIC TAC TOE\n");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine(  "============================");
                     Print(board);
-                    Console.WriteLine("\n " + player + " wins (/  ._.)/ 'Gratz\n\n Press ENTER");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write("\n " + player );
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine(" wins (/  ._.)/ 'Gratz\n");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("============================\n");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine(" Press ENTER");
                     Console.ReadLine();
                     Console.Clear();
 
                     // PLay again or exit
-                    Console.WriteLine("\n Press 1 then ENTER to play again\n\n OR\n\n Press 2 then ENTER to exit\n\n ");
+                    Console.WriteLine("\n Press 1 then ENTER to play again\n\n");   
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine(" OR\n\n");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine(" Press 2 then ENTER to exit\n\n");
                     int againORno = Convert.ToInt32(Console.ReadLine());
 
                     if (againORno == 1)
@@ -93,16 +129,26 @@ namespace TicTacToe
                  if (moves == 9)
                 {
                     Console.Clear();
-                    Console.WriteLine(" Sassy Tic Tac Toe\n\n" +
-                                      "===================");
-                    
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("\n SOMEWHAT SASSY TIC TAC TOE\n");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("============================");
                     Print(board);
-                    Console.WriteLine("\n NOONE WINS! >:D\n\n Press ENTER");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("\n NOONE WINS! >:D\n");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("============================\n");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine(" Press ENTER");
                     Console.ReadLine();
                     Console.Clear();
 
                     // PLay again or exit
-                    Console.WriteLine("\n Press 1 then ENTER to play again\n\n OR\n\n Press 2 then ENTER to exit\n\n ");
+                    Console.WriteLine("\n Press 1 then ENTER to play again\n\n");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine(" OR\n\n");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine(" Press 2 then ENTER to exit\n\n");
                     int againORno = Convert.ToInt32(Console.ReadLine());
 
                     if (againORno == 1)
@@ -127,8 +173,11 @@ namespace TicTacToe
                player = ChangePlayer(player);
                  
             }
-                Console.WriteLine("\n Good day\n\n\n Press ENTER to leave");
-                Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\n\n Good day\n");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(" Press ENTER to leave");
+            Console.ReadLine();
         }
 
       
@@ -147,13 +196,20 @@ namespace TicTacToe
 
             static void Print(char[,] board)// Board printing with variable
             {
-              Console.WriteLine("\n\n     1   2   3");
+                Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n     1   2   3");
                 for (int row = 0; row < 3; row++)
                 {
-                    Console.Write(" {0} | ", row + 1);
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write(" {0}", row + 1);
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.Write(" | ");
                     for (int col = 0; col < 3; col++)
                     {
-                        Console.Write(board[row, col] + " | ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write(board[row, col]);
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.Write(" | ");
                     }
                     Console.WriteLine();
                 }
@@ -170,5 +226,69 @@ namespace TicTacToe
                     }
                 }
             }
+        static void TitleAndInstructions()
+        {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\n WELCOME TO SOMEWHAT SASSY TIC TAC TOE");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\n=======================================");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\n Press ENTER to continue");
+            Console.ReadLine();
+            Console.Clear();
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\n Instructions");
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("\n\n Type a ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("ROW NUMBER ");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("then press ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("ENTER ");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("(not right now, you)");
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("\n\n Type a ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("COLUMN NUMBER ");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("then press ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("ENTER ");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("(only when you start playing)");
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("\n\n\n\n ROWS ");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("go from ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("TOP ");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("to ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("BOTTOM");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\n 1\n 2\n 3\n");
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("\n COLUMNS ");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("go from ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("LEFT ");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("to ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("RIGHT");
+            Console.WriteLine("\n 1   2   3\n\n\n");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\n Press ENTER to start playing");
+
+        }
     }
 }
